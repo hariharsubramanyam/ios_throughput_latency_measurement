@@ -10,8 +10,8 @@ This iOS 7 app measures network latency and throughput
 3. Deploy to device or simulator
 
 ## Usage
-1. Enter test time
-  * test time = the number of seconds that the test should run
+1. Enter test duration
+  * test duration = the number of seconds that the test should run
 2. Enter interval
   * interval = the seconds between throughput/latency measurements
 3. Click "Run Download Test"
