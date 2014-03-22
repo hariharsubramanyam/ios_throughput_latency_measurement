@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HDownloadTestDelegate.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface HViewController : UIViewController<HDownloadTestDelegate>
+
+@interface HViewController : UIViewController<HDownloadTestDelegate, MFMailComposeViewControllerDelegate>
 @end
