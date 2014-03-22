@@ -1,4 +1,4 @@
-Network Latency and Throughput (iOS 7)
+Network Latency and Throughput
 =============================================
 
 ## Summary
