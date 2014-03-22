@@ -61,15 +61,21 @@
 }
 
 - (void) onProgressUpdate:(double)fractionComplete{
-    self.lblOutput.text = [NSString stringWithFormat:@"%.2f%% Complete", fractionComplete];
+    self.lblOutput.text = [NSString stringWithFormat:@"%.2f%% Complete", fractionComplete*100];
     self.progressBar.progress = (fractionComplete);
-    NSLog(@"%.2f%% Complete", fractionComplete);
+    NSLog(@"%.2f%% Complete", fractionComplete*100);
 }
 
 - (void)onTestComplete:(HTestResults *)testResults{
     NSLog(@"Test Complete with filesize %d", testResults.fileSize);
     self.progressBar.hidden = YES;
     self.btnDownloadTest.enabled = YES;
+    self.lblOutput.text = @"";
+    for (int i = 0; i < [testResults.latencies count]; i++) {
+        double throughput = [((NSNumber *)[testResults.throughputs objectAtIndex:i]) doubleValue];
+        double latency = [((NSNumber *)[testResults.latencies objectAtIndex:i]) doubleValue];
+        self.lblOutput.text = [self.lblOutput.text stringByAppendingString:[NSString stringWithFormat:@"%d: Throughput = %f Mbps, Latency = %f ms\n\n", i,throughput,latency]];
+    }
     [self.btnDownloadTest setTitle:@"Run Download Test" forState:UIControlStateNormal];
 }
 

@@ -13,8 +13,11 @@
 @property (nonatomic, strong) id<HDownloadTestDelegate> delegate;
 @property (nonatomic, strong) NSDate *intervalStartDate;
 @property (nonatomic, strong) NSDate *iterationStartDate;
+
 @property (nonatomic, strong) NSMutableArray *throughputs;
 @property (nonatomic, strong) NSMutableArray *latencies;
+@property (nonatomic, strong) NSMutableArray *tempLatencies;
+
 @property (nonatomic) BOOL needsData;
 @property (nonatomic, strong) NSString *urlString;
 @property (nonatomic) int numInterval;
@@ -51,6 +54,7 @@
     self.urlString = urlString;
     self.intervalStartDate = [NSDate date];
     self.needsData = YES;
+    self.tempLatencies = [[NSMutableArray alloc] init];
     self.latencies = [[NSMutableArray alloc] init];
     self.throughputs = [[NSMutableArray alloc] init];
     self.numInterval = 0;
@@ -62,7 +66,7 @@
 - (void) makeRequest{
     self.iterationStartDate = [NSDate date];
     NSURL *url = [[NSURL alloc] initWithString:self.urlString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     [connection start];
 }
@@ -76,8 +80,7 @@
     }
     if (self.needsData) {
         self.needsData = YES;
-        [self.latencies addObject:[self getElapsedTime:self.iterationStartDate]];
-//        NSLog(@"Latency = %f", [[self.latencies lastObject] doubleValue]);
+        [self.tempLatencies addObject:[self getElapsedTime:self.iterationStartDate]];
     }
 }
 
@@ -91,7 +94,14 @@
     if (timeSinceIntervalStart > self.interval) {
         double throughput = 1.0*(self.numIteration * self.fileSize)/timeSinceIntervalStart/1000000.0;
         [self.throughputs addObject:[[NSNumber alloc] initWithDouble:throughput]];
-//        NSLog(@"Throughput = %f", [[self.throughputs lastObject] doubleValue]);
+        double averageLatency = 0.0;
+        for (NSNumber *number in self.tempLatencies) {
+            averageLatency += [number doubleValue];
+        }
+        averageLatency /= [self.tempLatencies count];
+        averageLatency *= 1000.0;
+        [self.tempLatencies removeAllObjects];
+        [self.latencies addObject:[[NSNumber alloc] initWithDouble:averageLatency]];
         self.numIteration = 0;
         self.intervalStartDate = [NSDate date];
         self.needsData = YES;
