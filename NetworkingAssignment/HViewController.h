@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HDownloadTestDelegate.h"
 
-@interface HViewController : UIViewController
-
+@interface HViewController : UIViewController<HDownloadTestDelegate>
 @end

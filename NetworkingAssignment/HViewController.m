@@ -7,12 +7,46 @@
 //
 
 #import "HViewController.h"
+#import "HDownloader.h"
+#import "HDownloadTestDelegate.h"
+
+#define URL @"http://web.mit.edu/21w.789/www/papers/griswold2004.pdf"
 
 @interface HViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextView *lblOutput;
+@property (weak, nonatomic) IBOutlet UITextField *txtInterval;
+@property (weak, nonatomic) IBOutlet UIButton *btnDownloadTest;
+@property (weak, nonatomic) IBOutlet UITextField *txtTestTime;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (nonatomic, strong) HDownloader *downloadTest;
 @end
 
 @implementation HViewController
+
+- (HDownloader *)downloadTest{
+    if (!_downloadTest) {
+        _downloadTest = [[HDownloader alloc] initWithDelegate:self];
+    }
+    return _downloadTest;
+}
+
+
+- (IBAction)on_button_click:(id)sender {
+    [self.view endEditing:YES];
+    double interval = [self.txtInterval.text doubleValue];
+    double testTime = [self.txtTestTime.text doubleValue];
+    if(ABS(interval*testTime) < 0.01){
+        return;
+    }
+    BOOL testRunning = [self.downloadTest doDownloadTestForURLString:URL withTestTime:testTime andInterval:interval];
+    if (testRunning) {
+        self.progressBar.hidden = NO;
+        self.progressBar.progress = 0.0f;
+        NSLog(@"Test Started");
+        self.btnDownloadTest.enabled = false;
+        [self.btnDownloadTest setTitle:@"Running Test..." forState:UIControlStateNormal];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -25,5 +59,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) onProgressUpdate:(double)fractionComplete{
+    self.lblOutput.text = [NSString stringWithFormat:@"%.2f%% Complete", fractionComplete];
+    self.progressBar.progress = (fractionComplete);
+    NSLog(@"%.2f%% Complete", fractionComplete);
+}
+
+- (void)onTestComplete:(HTestResults *)testResults{
+    NSLog(@"Test Complete with filesize %d", testResults.fileSize);
+    self.progressBar.hidden = YES;
+    self.btnDownloadTest.enabled = YES;
+    [self.btnDownloadTest setTitle:@"Run Download Test" forState:UIControlStateNormal];
+}
+
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730023A618DDCF5200FA557A /* HDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 730023A518DDCF5200FA557A /* HDownloader.m */; };
+		730023AA18DDE91D00FA557A /* HTestResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 730023A918DDE91D00FA557A /* HTestResults.m */; };
 		7343DCF518DB894000E945DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7343DCF418DB894000E945DB /* Foundation.framework */; };
 		7343DCF718DB894000E945DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7343DCF618DB894000E945DB /* CoreGraphics.framework */; };
 		7343DCF918DB894000E945DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7343DCF818DB894000E945DB /* UIKit.framework */; };
@@ -34,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730023A418DDCF5200FA557A /* HDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDownloader.h; sourceTree = "<group>"; };
+		730023A518DDCF5200FA557A /* HDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDownloader.m; sourceTree = "<group>"; };
+		730023A718DDE48A00FA557A /* HDownloadTestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDownloadTestDelegate.h; sourceTree = "<group>"; };
+		730023A818DDE91D00FA557A /* HTestResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTestResults.h; sourceTree = "<group>"; };
+		730023A918DDE91D00FA557A /* HTestResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTestResults.m; sourceTree = "<group>"; };
 		7343DCF118DB894000E945DB /* NetworkingAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7343DCF418DB894000E945DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7343DCF618DB894000E945DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +86,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		730023A318DDCF4100FA557A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				730023A418DDCF5200FA557A /* HDownloader.h */,
+				730023A518DDCF5200FA557A /* HDownloader.m */,
+				730023A718DDE48A00FA557A /* HDownloadTestDelegate.h */,
+				730023A818DDE91D00FA557A /* HTestResults.h */,
+				730023A918DDE91D00FA557A /* HTestResults.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		7343DCE818DB894000E945DB = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +131,7 @@
 		7343DCFA18DB894000E945DB /* NetworkingAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				730023A318DDCF4100FA557A /* Models */,
 				7343DD0318DB894000E945DB /* HAppDelegate.h */,
 				7343DD0418DB894000E945DB /* HAppDelegate.m */,
 				7343DD0618DB894000E945DB /* Main.storyboard */,
@@ -253,6 +273,8 @@
 				7343DD0B18DB894000E945DB /* HViewController.m in Sources */,
 				7343DD0118DB894000E945DB /* main.m in Sources */,
 				7343DD0518DB894000E945DB /* HAppDelegate.m in Sources */,
+				730023AA18DDE91D00FA557A /* HTestResults.m in Sources */,
+				730023A618DDCF5200FA557A /* HDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +479,7 @@
 				7343DD2518DB894000E945DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7343DD2618DB894000E945DB /* Build configuration list for PBXNativeTarget "NetworkingAssignmentTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +488,7 @@
 				7343DD2818DB894000E945DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
