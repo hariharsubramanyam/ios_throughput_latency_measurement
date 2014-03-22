@@ -33,13 +33,13 @@
                                     <action selector="run_test_button_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wUy-AG-MLH"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Test Time (in seconds)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJg-AH-AN9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Test Duration (in seconds)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJg-AH-AN9">
                                 <rect key="frame" x="20" y="52" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seconds per throughput measure" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-hX-TjV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Measurement Interval (seconds)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-hX-TjV">
                                 <rect key="frame" x="20" y="90" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
